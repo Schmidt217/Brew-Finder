@@ -7,6 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4D23D9B528DB77E7005F91BE /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D23D9B428DB77E7005F91BE /* NetworkManager.swift */; };
+		4D23D9B728DB785D005F91BE /* BreweryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D23D9B628DB785D005F91BE /* BreweryData.swift */; };
+		4D23D9B928DB7E6B005F91BE /* ResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D23D9B828DB7E6B005F91BE /* ResultsView.swift */; };
+		4D23D9BB28DB7ED2005F91BE /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D23D9BA28DB7ED2005F91BE /* WebView.swift */; };
+		4D23D9D728DBC8D9005F91BE /* BreweryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D23D9D628DBC8D9005F91BE /* BreweryListView.swift */; };
 		4DDEE00D28D6394D00CD9FB2 /* Brew_FinderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDEE00C28D6394D00CD9FB2 /* Brew_FinderApp.swift */; };
 		4DDEE00F28D6394D00CD9FB2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDEE00E28D6394D00CD9FB2 /* ContentView.swift */; };
 		4DDEE01128D6394F00CD9FB2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4DDEE01028D6394F00CD9FB2 /* Assets.xcassets */; };
@@ -16,6 +21,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4D23D9B428DB77E7005F91BE /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		4D23D9B628DB785D005F91BE /* BreweryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreweryData.swift; sourceTree = "<group>"; };
+		4D23D9B828DB7E6B005F91BE /* ResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsView.swift; sourceTree = "<group>"; };
+		4D23D9BA28DB7ED2005F91BE /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
+		4D23D9D628DBC8D9005F91BE /* BreweryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreweryListView.swift; sourceTree = "<group>"; };
 		4DDEE00928D6394D00CD9FB2 /* Brew Finder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Brew Finder.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DDEE00C28D6394D00CD9FB2 /* Brew_FinderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brew_FinderApp.swift; sourceTree = "<group>"; };
 		4DDEE00E28D6394D00CD9FB2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -36,6 +46,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4D23D9AF28DB712F005F91BE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4D23D9B828DB7E6B005F91BE /* ResultsView.swift */,
+				4D23D9BA28DB7ED2005F91BE /* WebView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		4DDEE00028D6394D00CD9FB2 = {
 			isa = PBXGroup;
 			children = (
@@ -55,10 +74,10 @@
 		4DDEE00B28D6394D00CD9FB2 /* Brew Finder */ = {
 			isa = PBXGroup;
 			children = (
+				4D23D9AF28DB712F005F91BE /* Views */,
 				4DDEE00C28D6394D00CD9FB2 /* Brew_FinderApp.swift */,
 				4DDEE01C28D63BFA00CD9FB2 /* Screens */,
 				4DDEE01B28D63BC700CD9FB2 /* Model */,
-				4DDEE01A28D63BB800CD9FB2 /* Views */,
 				4DDEE01028D6394F00CD9FB2 /* Assets.xcassets */,
 				4DDEE01228D6394F00CD9FB2 /* Preview Content */,
 			);
@@ -73,16 +92,11 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		4DDEE01A28D63BB800CD9FB2 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
 		4DDEE01B28D63BC700CD9FB2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				4D23D9B428DB77E7005F91BE /* NetworkManager.swift */,
+				4D23D9B628DB785D005F91BE /* BreweryData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -92,6 +106,7 @@
 			children = (
 				4DDEE00E28D6394D00CD9FB2 /* ContentView.swift */,
 				4DDEE01D28D63D2600CD9FB2 /* SearchView.swift */,
+				4D23D9D628DBC8D9005F91BE /* BreweryListView.swift */,
 				4DDEE01F28D63D3A00CD9FB2 /* FavoritesView.swift */,
 			);
 			path = Screens;
@@ -167,8 +182,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4D23D9B528DB77E7005F91BE /* NetworkManager.swift in Sources */,
+				4D23D9B928DB7E6B005F91BE /* ResultsView.swift in Sources */,
+				4D23D9D728DBC8D9005F91BE /* BreweryListView.swift in Sources */,
 				4DDEE02028D63D3A00CD9FB2 /* FavoritesView.swift in Sources */,
 				4DDEE00F28D6394D00CD9FB2 /* ContentView.swift in Sources */,
+				4D23D9B728DB785D005F91BE /* BreweryData.swift in Sources */,
+				4D23D9BB28DB7ED2005F91BE /* WebView.swift in Sources */,
 				4DDEE01E28D63D2600CD9FB2 /* SearchView.swift in Sources */,
 				4DDEE00D28D6394D00CD9FB2 /* Brew_FinderApp.swift in Sources */,
 			);

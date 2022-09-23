@@ -8,18 +8,30 @@
 import SwiftUI
 
 struct ContentView: View {
+
     var body: some View {
         TabView {
-                SearchView()
-                    .tabItem {
-                        Label("Find Brews", systemImage: "wineglass")
+            SearchView()
+                .tabItem {
+                    Image(systemName: "square.grid.2x2")
+                    Text("Search")
                 }
-                FavoritesView()
-                    .tabItem {
-                        Label("Favorites", systemImage: "star.square.fill")
-                    }
-                    
+            
+            FavoritesView()
+                .tabItem {
+                    Image(systemName: "star")
+                    Text("Favorites")
+                }
+    
+        } //: Tab
+        
+        .onAppear {
+            let tabBarAppearance = UITabBarAppearance()
+            tabBarAppearance.backgroundColor = .orange
+            tabBarAppearance.shadowColor = .gray
+            UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
         }
+       
     }
 }
 
