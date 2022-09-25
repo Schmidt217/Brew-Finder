@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
+    let gradient = LinearGradient(colors: [Color.orange, Color.green],
+                                  startPoint: .top, endPoint: .bottom)
 
     var body: some View {
         TabView {
@@ -27,8 +29,7 @@ struct ContentView: View {
         
         .onAppear {
             let tabBarAppearance = UITabBarAppearance()
-            tabBarAppearance.backgroundColor = .orange
-            tabBarAppearance.shadowColor = .gray
+            tabBarAppearance.backgroundColor = .gray
             UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
         }
        

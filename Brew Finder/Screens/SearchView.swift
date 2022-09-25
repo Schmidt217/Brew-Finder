@@ -6,61 +6,52 @@
 //
 
 import SwiftUI
+import CoreLocation
+
 
 struct SearchView: View {
+    
+    //    @State private var path: [Brewery] = []
+    
     @State private var brewSearch = ""
-    @State private var isShowingResultsView = false
     @ObservedObject var networkManager = NetworkManager()
+    @ObservedObject var locationManager = LocationManager()
+    
+//    var latitude: CLLocationDegrees
+//    var longitude: CLLocationDegrees
 
+    
     let gradient = LinearGradient(colors: [Color.orange, Color.green],
                                   startPoint: .top, endPoint: .bottom)
-
+    
     var body: some View {
-        NavigationView {
+        NavigationStack {
             ZStack {
                 gradient
                     .opacity(0.25)
                     .ignoresSafeArea()
-
-                VStack {
-                    Rectangle()
-                        .fill(Color.clear)
-                        .frame(height: 1)
-                        .background(LinearGradient(colors: [.green.opacity(0.3), .orange.opacity(0.5)], startPoint: .topLeading, endPoint: .bottomTrailing))
+                
+                List{
                     Text("Search For Breweries")
-                        .font(.system(.title, design: .rounded))
+                        .font(.system(.title3, design: .rounded))
                         .fontWeight(.bold)
+                    
+                    TextField("Search by Name", text: $brewSearch)
+                        .frame(width: 300, height: 50.0)
+                        .textInputAutocapitalization(.never)
+                        .disableAutocorrection(true)
+                        .border(.primary)
+                        .cornerRadius(3.0)
                         .padding()
-
-                    Spacer()
-
-                    HStack {
-                        TextField("Search by Name", text: $brewSearch)
-                            .frame(width: 300, height: 50.0)
-                            .textInputAutocapitalization(.never)
-                            .disableAutocorrection(true)
-                            .border(.primary)
-                            .cornerRadius(3.0)
-                            .padding()
-                            .onChange(of: brewSearch) { newValue in
-                                            brewSearch = newValue.replacingOccurrences(of: " ", with: "_")
-                                        }
-                            .onSubmit {
-                                
+                        .onChange(of: brewSearch) { newValue in
+                            brewSearch = newValue.replacingOccurrences(of: " ", with: "_")
+                            Task.init(operation: {
+                                if !newValue.isEmpty {
+                                    self.networkManager.fetchDataBySearch(name: newValue)
+                                }
+                            })
                         }
-                        NavigationLink(destination: BreweryListView(brewerySearch: brewSearch), isActive: $isShowingResultsView) {
-                            Button(action: {
-                                isShowingResultsView = true
-                            }) {
-                                Image(systemName: "arrow.2.squarepath")
-                            }
-                        }
-                            
-
-                        
-
-                    }
-
+                    
                     HStack {
                         ZStack {
                             Capsule()
@@ -77,19 +68,27 @@ struct SearchView: View {
                         .foregroundColor(.white)
                         .frame(width: 300, height: 80)
                         .onTapGesture {
-                            // code
+                            locationManager.requestAuthorization(always: true)
+                            guard let latitude = CLLocationManager().location?.coordinate.latitude else {return}
+                            guard let longitude = CLLocationManager().location?.coordinate.longitude else {return}
+                            networkManager.fetchDataByLocation(latitude: latitude, longitude: longitude)
+                            
+                            }
+                        } //: HStack
+                        
+                        ForEach(networkManager.breweries) { brewery in
+                            NavigationLink(destination: BreweryDetailView()) {
+                                BreweryListView(brewery: brewery)
+                            }
                         }
-                    } //: HStack
-
-                    Spacer()
-                        .frame(maxHeight: 400)
+                    }
                 } //: VStack
             } //: ZStack
             .navigationTitle("Brew Finder")
-            .font(.title2)
-        }//: NAVIGATION
+        } //: NAVIGATION
     }
-}
+
+
 
 struct SearchView_Previews: PreviewProvider {
     static var previews: some View {

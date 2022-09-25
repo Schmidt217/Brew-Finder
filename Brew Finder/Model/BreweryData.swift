@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Brewery: Decodable, Identifiable {
+struct Brewery: Decodable, Identifiable, Hashable {
 
     let id: String
     let name: String

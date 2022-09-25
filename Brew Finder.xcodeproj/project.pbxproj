@@ -12,6 +12,8 @@
 		4D23D9B928DB7E6B005F91BE /* ResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D23D9B828DB7E6B005F91BE /* ResultsView.swift */; };
 		4D23D9BB28DB7ED2005F91BE /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D23D9BA28DB7ED2005F91BE /* WebView.swift */; };
 		4D23D9D728DBC8D9005F91BE /* BreweryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D23D9D628DBC8D9005F91BE /* BreweryListView.swift */; };
+		4DA73FB228DFA0EB0028ED9D /* BreweryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA73FB128DFA0EB0028ED9D /* BreweryDetailView.swift */; };
+		4DA73FB528DFC8190028ED9D /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA73FB428DFC8190028ED9D /* LocationManager.swift */; };
 		4DDEE00D28D6394D00CD9FB2 /* Brew_FinderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDEE00C28D6394D00CD9FB2 /* Brew_FinderApp.swift */; };
 		4DDEE00F28D6394D00CD9FB2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDEE00E28D6394D00CD9FB2 /* ContentView.swift */; };
 		4DDEE01128D6394F00CD9FB2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4DDEE01028D6394F00CD9FB2 /* Assets.xcassets */; };
@@ -26,6 +28,9 @@
 		4D23D9B828DB7E6B005F91BE /* ResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsView.swift; sourceTree = "<group>"; };
 		4D23D9BA28DB7ED2005F91BE /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		4D23D9D628DBC8D9005F91BE /* BreweryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreweryListView.swift; sourceTree = "<group>"; };
+		4DA73FB128DFA0EB0028ED9D /* BreweryDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreweryDetailView.swift; sourceTree = "<group>"; };
+		4DA73FB328DFC3E20028ED9D /* Brew-Finder-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Brew-Finder-Info.plist"; sourceTree = SOURCE_ROOT; };
+		4DA73FB428DFC8190028ED9D /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		4DDEE00928D6394D00CD9FB2 /* Brew Finder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Brew Finder.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DDEE00C28D6394D00CD9FB2 /* Brew_FinderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brew_FinderApp.swift; sourceTree = "<group>"; };
 		4DDEE00E28D6394D00CD9FB2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -51,6 +56,8 @@
 			children = (
 				4D23D9B828DB7E6B005F91BE /* ResultsView.swift */,
 				4D23D9BA28DB7ED2005F91BE /* WebView.swift */,
+				4D23D9D628DBC8D9005F91BE /* BreweryListView.swift */,
+				4DA73FB128DFA0EB0028ED9D /* BreweryDetailView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -74,6 +81,7 @@
 		4DDEE00B28D6394D00CD9FB2 /* Brew Finder */ = {
 			isa = PBXGroup;
 			children = (
+				4DA73FB328DFC3E20028ED9D /* Brew-Finder-Info.plist */,
 				4D23D9AF28DB712F005F91BE /* Views */,
 				4DDEE00C28D6394D00CD9FB2 /* Brew_FinderApp.swift */,
 				4DDEE01C28D63BFA00CD9FB2 /* Screens */,
@@ -97,6 +105,7 @@
 			children = (
 				4D23D9B428DB77E7005F91BE /* NetworkManager.swift */,
 				4D23D9B628DB785D005F91BE /* BreweryData.swift */,
+				4DA73FB428DFC8190028ED9D /* LocationManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -106,7 +115,6 @@
 			children = (
 				4DDEE00E28D6394D00CD9FB2 /* ContentView.swift */,
 				4DDEE01D28D63D2600CD9FB2 /* SearchView.swift */,
-				4D23D9D628DBC8D9005F91BE /* BreweryListView.swift */,
 				4DDEE01F28D63D3A00CD9FB2 /* FavoritesView.swift */,
 			);
 			path = Screens;
@@ -185,7 +193,9 @@
 				4D23D9B528DB77E7005F91BE /* NetworkManager.swift in Sources */,
 				4D23D9B928DB7E6B005F91BE /* ResultsView.swift in Sources */,
 				4D23D9D728DBC8D9005F91BE /* BreweryListView.swift in Sources */,
+				4DA73FB528DFC8190028ED9D /* LocationManager.swift in Sources */,
 				4DDEE02028D63D3A00CD9FB2 /* FavoritesView.swift in Sources */,
+				4DA73FB228DFA0EB0028ED9D /* BreweryDetailView.swift in Sources */,
 				4DDEE00F28D6394D00CD9FB2 /* ContentView.swift in Sources */,
 				4D23D9B728DB785D005F91BE /* BreweryData.swift in Sources */,
 				4D23D9BB28DB7ED2005F91BE /* WebView.swift in Sources */,
@@ -322,9 +332,9 @@
 				DEVELOPMENT_TEAM = 62L6L7882M;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Brew-Finder-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -351,9 +361,9 @@
 				DEVELOPMENT_TEAM = 62L6L7882M;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "Brew-Finder-Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (

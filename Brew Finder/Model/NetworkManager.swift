@@ -6,12 +6,36 @@
 //
 
 import Foundation
+import CoreLocation
 
 class NetworkManager: ObservableObject {
     @Published var breweries = [Brewery]()
     
     func fetchDataBySearch(name: String) {
         if let url = URL(string: "https://api.openbrewerydb.org/breweries?by_name=\(name)") {
+            let session = URLSession(configuration: .default)
+            let task = session.dataTask(with: url) { data, response, error in
+                if error == nil {
+                    let decoder = JSONDecoder()
+                    if let safeData = data {
+                        do {
+                            let results = try decoder.decode([Brewery].self, from: safeData)
+                            DispatchQueue.main.async {
+                                self.breweries = results
+                            }
+                            
+                        }catch {
+                            print(error)
+                        }
+                    }
+                }
+            }
+            task.resume()
+        }
+    }
+    
+    func fetchDataByLocation(latitude: CLLocationDegrees, longitude: CLLocationDegrees) {
+        if let url = URL(string: "https://api.openbrewerydb.org/breweries?by_dist=\(latitude),\(longitude)") {
             let session = URLSession(configuration: .default)
             let task = session.dataTask(with: url) { data, response, error in
                 if error == nil {
