@@ -18,9 +18,10 @@ struct Brewery: Decodable, Identifiable, Hashable {
     let city: String?
     let state: String?
     let postal_code: String?
+    let country: String?
     let latitude: String?
     let longitude: String?
     let phone: String?
-    let url: String?
+    let website_url: String?
     
 }

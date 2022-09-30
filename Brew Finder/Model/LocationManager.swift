@@ -33,15 +33,4 @@ extension LocationManager: CLLocationManagerDelegate {
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         self.authorizationStatus = status
     }
-    
-//    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]){
-//        if let location = locations.last {
-//            locationManager.stopUpdatingLocation()
-//            let lat = location.coordinate.latitude
-//            let lng = location.coordinate.longitude
-//            networkManager.fetchDataByLocation(latitude: lat, longitude: lng)
-//            print(lat)
-//            print(lng)
-//        }
-//    }
 }

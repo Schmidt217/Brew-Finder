@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct BreweryListView: View {
-    @ObservedObject var networkManager = NetworkManager()
+//    @ObservedObject var networkManager = NetworkManager()
     
     let brewery: Brewery
     

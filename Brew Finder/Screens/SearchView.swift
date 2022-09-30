@@ -16,9 +16,6 @@ struct SearchView: View {
     @State private var brewSearch = ""
     @ObservedObject var networkManager = NetworkManager()
     @ObservedObject var locationManager = LocationManager()
-    
-//    var latitude: CLLocationDegrees
-//    var longitude: CLLocationDegrees
 
     
     let gradient = LinearGradient(colors: [Color.orange, Color.green],
@@ -44,10 +41,10 @@ struct SearchView: View {
                         .cornerRadius(3.0)
                         .padding()
                         .onChange(of: brewSearch) { newValue in
-                            brewSearch = newValue.replacingOccurrences(of: " ", with: "_")
+                            brewSearch = newValue
                             Task.init(operation: {
                                 if !newValue.isEmpty {
-                                    self.networkManager.fetchDataBySearch(name: newValue)
+                                    self.networkManager.fetchDataBySearch(name: newValue.replacingOccurrences(of: " ", with: "_"))
                                 }
                             })
                         }
@@ -77,15 +74,15 @@ struct SearchView: View {
                         } //: HStack
                         
                         ForEach(networkManager.breweries) { brewery in
-                            NavigationLink(destination: BreweryDetailView()) {
+                            NavigationLink(destination: BreweryDetailView(brewery: brewery)) {
                                 BreweryListView(brewery: brewery)
                             }
                         }
                     }
-                } //: VStack
-            } //: ZStack
+                }
             .navigationTitle("Brew Finder")
-        } //: NAVIGATION
+            }
+        }
     }
 
 
