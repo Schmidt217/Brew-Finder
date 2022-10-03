@@ -8,21 +8,28 @@
 import SwiftUI
 import MapKit
 
+
 struct MapInsetView: View {
-    @State var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 47.8283, longitude: -98.5795), span: MKCoordinateSpan(latitudeDelta: 90.0, longitudeDelta: 90.0))
+    @State var region: MKCoordinateRegion
+    @State var annotation: MKPointAnnotation
     
     var brewery: Brewery
     
+    struct Place: Identifiable {
+        let id = UUID()
+        let name: String
+        let coordinate: CLLocationCoordinate2D
+    }
+    var annotations = [
+        Place(name: "xyz", coordinate: CLLocationCoordinate2D(latitude: 34.011286, longitude: -116.166868))
+    ]
+    
     var body: some View {
 
-        Map(coordinateRegion: $region)
+        return Map(coordinateRegion: $region, annotationItems: annotations) {_ in
+            MapMarker(coordinate: annotation.coordinate)
+        }
             .frame(width: 300, height: 300)
-            .onAppear {
-                if let latitude = brewery.latitude, let longitude = brewery.longitude {
-                    region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: CLLocationDegrees(latitude)!, longitude: CLLocationDegrees(longitude)!), span: MKCoordinateSpan(latitudeDelta: 0.03, longitudeDelta: 0.03))
-                }
-                
-            }
     }
 }
 
