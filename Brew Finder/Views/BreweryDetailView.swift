@@ -7,61 +7,133 @@
 
 import SwiftUI
 import MapKit
+import CoreLocation
+
 
 struct BreweryDetailView: View {
-    
+    @ObservedObject var locationManager = LocationManager()
+
+
+    let span = MKCoordinateSpan(latitudeDelta: 0.03, longitudeDelta: 0.03)
     let brewery: Brewery
     
     func getLat() -> CLLocationDegrees {
-        guard let latitude = brewery.latitude else {return 34.011286}
+        guard let latitude = brewery.latitude else {return 0.00}
         return CLLocationDegrees(latitude)!
     }
     func getLng() -> CLLocationDegrees {
-        guard let longitude = brewery.longitude else {return -116.166868}
+        guard let longitude = brewery.longitude else {return 0.00}
         return CLLocationDegrees(longitude)!
     }
+    func getStreet() -> String {
+        guard let street = brewery.street else {return ""}
+        return street
+    }
+    func getCity() -> String {
+        guard let city = brewery.city else {return ""}
+        return city
+    }
+    func getState() -> String {
+        guard let state = brewery.state else {return ""}
+        return state
+    }
+    func getPostalCode() -> String {
+        guard let postalCode = brewery.postal_code else {return ""}
+        return postalCode
+    }
     
+    func breweryType() -> String {
+        switch brewery.brewery_type {
+        case "planning":
+            return "In Planning"
+        case "taproom":
+            return "Taproom"
+        case "micro":
+            return "Micro Brewery"
+        case "brewpub":
+            return "Brewpub"
+        case "regional":
+            return "Regional Brewery"
+        case "large":
+            return "National Brewery"
+        default:
+            return "Unknown Type of Brewery"
+        }
+    
+    }
+    
+    let gradient = LinearGradient(colors: [Color("DarkGreen"), Color("Brown")],
+                                  startPoint: .top, endPoint: .bottom)
     
     var body: some View {
-        let coordinate = CLLocationCoordinate2D(
-            latitude: getLat(), longitude: getLng())
+        let coords = CLLocationCoordinate2D(latitude: getLat(), longitude: getLng())
+        let region = MKCoordinateRegion(center: coords, span: span)
+
         
-        let span = MKCoordinateSpan(latitudeDelta: 0.03, longitudeDelta: 0.03)
-        
-        let region = MKCoordinateRegion(center: coordinate, span: span)
-        let annotation = MKPointAnnotation()
-        annotation.coordinate = coordinate
-        annotation.title = brewery.name
+        let address = "\(brewery.street ?? "") \(brewery.city ?? ""), \(brewery.state ?? "") \(brewery.postal_code ?? "")"
+        locationManager.locationString = address
+    
         
        return NavigationStack {
-            Text(brewery.name)
-                .font(.system(.title))
-                .padding(10)
-                .multilineTextAlignment(.center)
-           Spacer()
-            if brewery.website_url != nil {
-                Link(destination: URL(string: brewery.website_url!)!) {
-                    HStack{
-                        Image(systemName: "link.circle.fill")
-                        Text("Website")
-                    }
-                }
-            }
-            if brewery.phone != nil {
-                Link(destination: URL(string: "tel:\(brewery.phone!)")!){
-                    Image(systemName: "phone")
-                    Text(brewery.phone!.applyPatternOnNumbers(pattern: "(###) ###-#### ", replacementCharacter: "#"))
-                }
-            }
-           if (brewery.latitude != nil) && (brewery.longitude != nil) {
-               MapInsetView(region: region, annotation: annotation, brewery: brewery)
-                    .cornerRadius(10)
-                    .padding()
-           }
-         
-        }
+           ZStack {
+               gradient
+                   .opacity(0.35)
+                   .ignoresSafeArea()
+               VStack {
+                   Text(brewery.name)
+                       .font(.system(.title))
+                       .padding(10)
+                       .multilineTextAlignment(.center)
+                   Text("Brewery Type: \(breweryType())")
+                   Spacer()
+                   if  let url = brewery.website_url {
+                       Link(destination: URL(string: url)!) {
+                           HStack{
+                               Image(systemName: "link.circle.fill")
+                               Text("Website")
+                           }
+                       }
+                   }
+                   if let phoneNumber = brewery.phone {
+                       Link(destination: URL(string: "tel:\(phoneNumber)")!){
+                           Image(systemName: "phone")
+                           Text(phoneNumber.applyPatternOnNumbers(pattern: "(###) ###-#### ", replacementCharacter: "#"))
+                       }
+                       .padding()
+                   }
+                   Spacer()
+                   Group {
+                       Text(getStreet())
+                       if brewery.address_2 != nil {
+                           Text(brewery.address_2!)
+                       }
+                       if brewery.address_3 != nil {
+                           Text(brewery.address_3!)
+                       }
+                       Text("\(getCity()), \(getState())")
+                       Text(getPostalCode())
+                   }
+                   .onTapGesture {
+                       locationManager.openMapWithAddress()
+                   }
+                   .alert(isPresented: $locationManager.invalid) {
+                       Alert(title: Text("Something went Wrong"), message: Text("It looks like we don't have a valid address for this brewery"), dismissButton: .default(Text("OK"), action:{
+                           locationManager.invalid = false
+                       }))
+                   }
+                   Spacer()
+                   
+                   
+                   MapInsetView(region: region, brewery: brewery)
+                       .cornerRadius(10)
+                       .padding()
+                      
+    
+                     
+               }//: VStack
+           }//: ZStack
+        }//: Navigation Stack
         .navigationBarTitleDisplayMode(.inline)
-  
     }
 }
 
@@ -76,5 +148,11 @@ extension String {
             pureNumber.insert(patternCharacter, at: stringIndex)
         }
         return pureNumber
+    }
+}
+
+extension CLLocationCoordinate2D: Equatable {
+    public static func == (lhs: CLLocationCoordinate2D, rhs: CLLocationCoordinate2D) -> Bool {
+        return lhs.latitude == rhs.latitude && lhs.longitude == rhs.longitude
     }
 }

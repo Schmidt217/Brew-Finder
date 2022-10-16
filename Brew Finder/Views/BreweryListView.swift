@@ -8,21 +8,19 @@
 import SwiftUI
 
 struct BreweryListView: View {
-//    @ObservedObject var networkManager = NetworkManager()
     
     let brewery: Brewery
     
     var body: some View {
         HStack{
-            Image(systemName: "wineglass")
+            Image("beer-glass")
+                .resizable()
+                .scaledToFit()
+                .frame(width: 35, height: 35)
             Text(brewery.name)
+            Spacer()
+            Image(systemName: "star")
         }
     }
 }
 
-//struct BreweryListView_Previews: PreviewProvider {
-//    static let brew: Brewery = NetworkManager.fetchDataBySearch("4_noses")
-//    static var previews: some View {
-//        BreweryListView(brewery: brew)
-//    }
-//}

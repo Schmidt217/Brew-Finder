@@ -8,32 +8,32 @@
 import SwiftUI
 
 struct ContentView: View {
-    let gradient = LinearGradient(colors: [Color.orange, Color.green],
+    
+    let gradient = LinearGradient(colors: [Color("DarkGreen"), Color("Brown")],
                                   startPoint: .top, endPoint: .bottom)
 
     var body: some View {
-        TabView {
-            SearchView()
-                .tabItem {
-                    Image(systemName: "square.grid.2x2")
-                    Text("Search")
-                }
-            
-            FavoritesView()
-                .tabItem {
-                    Image(systemName: "star")
-                    Text("Favorites")
-                }
-    
-        } //: Tab
+            TabView {
+                SearchView()
+                    .tabItem {
+                        Image(systemName: "square.grid.2x2")
+                        Text("Search")
+                    }
+                
+                FavoritesView()
+                    .tabItem {
+                        Image(systemName: "star")
+                        Text("Favorites")
+                    }
         
-        .onAppear {
-            let tabBarAppearance = UITabBarAppearance()
-            tabBarAppearance.backgroundColor = .gray
-            UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
+            } //: Tab
+            .accentColor(Color("Green"))
+            .onAppear {
+                let tabBarAppearance = UITabBarAppearance()
+                tabBarAppearance.backgroundColor = UIColor(Color("LightBrown"))
+                UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
+            }
         }
-       
-    }
 }
 
 struct ContentView_Previews: PreviewProvider {

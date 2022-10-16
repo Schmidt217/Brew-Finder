@@ -11,24 +11,29 @@ import CoreLocation
 
 struct SearchView: View {
     
-    //    @State private var path: [Brewery] = []
-    
     @State private var brewSearch = ""
     @ObservedObject var networkManager = NetworkManager()
     @ObservedObject var locationManager = LocationManager()
 
+
     
-    let gradient = LinearGradient(colors: [Color.orange, Color.green],
+    let gradient = LinearGradient(colors: [Color("DarkGreen"), Color("Brown")],
                                   startPoint: .top, endPoint: .bottom)
+    
+    init() {
+       UITableView.appearance().separatorStyle = .none
+       UITableViewCell.appearance().backgroundColor = .green
+       UITableView.appearance().backgroundColor = .green
+    }
     
     var body: some View {
         NavigationStack {
             ZStack {
                 gradient
-                    .opacity(0.25)
+                    .opacity(0.35)
                     .ignoresSafeArea()
                 
-                List{
+                VStack {
                     Text("Search For Breweries")
                         .font(.system(.title3, design: .rounded))
                         .fontWeight(.bold)
@@ -49,10 +54,10 @@ struct SearchView: View {
                             })
                         }
                     
-                    HStack {
+                    HStack(alignment: .center) {
                         ZStack {
                             Capsule()
-                                .fill(Color("ColorBlue"))
+                                .fill(Color("Brown"))
                             Capsule()
                                 .fill(.black.opacity(0.15))
                                 .padding(8)
@@ -72,15 +77,22 @@ struct SearchView: View {
                             
                             }
                         } //: HStack
-                        
-                        ForEach(networkManager.breweries) { brewery in
-                            NavigationLink(destination: BreweryDetailView(brewery: brewery)) {
-                                BreweryListView(brewery: brewery)
+                                List {
+                                    ForEach(networkManager.breweries) { brewery in
+                                        NavigationLink(destination: BreweryDetailView(brewery: brewery)) {
+                                            BreweryListView(brewery: brewery)
+                                        }
+                                }
                             }
-                        }
+                                .background(.clear)
+                                .scrollContentBackground(.hidden)
+                                .blendMode(networkManager.breweries.isEmpty ? .destinationOver : .normal)
+                        
                     }
                 }
             .navigationTitle("Brew Finder")
+            .navigationBarTitleDisplayMode(.large)
+            .foregroundColor(Color("DarkGreen"))
             }
         }
     }

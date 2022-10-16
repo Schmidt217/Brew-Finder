@@ -15,3 +15,4 @@ struct Brew_FinderApp: App {
         }
     }
 }
+
