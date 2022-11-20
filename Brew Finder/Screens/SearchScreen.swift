@@ -9,13 +9,15 @@ import SwiftUI
 import CoreLocation
 
 
-struct SearchView: View {
+struct SearchScreen: View {
     
     @State private var brewSearch = ""
     @ObservedObject var networkManager = NetworkManager()
     @ObservedObject var locationManager = LocationManager()
 
-
+    func hideKeyboard() {
+    UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+    }
     
     let gradient = LinearGradient(colors: [Color("DarkGreen"), Color("Brown")],
                                   startPoint: .top, endPoint: .bottom)
@@ -101,6 +103,6 @@ struct SearchView: View {
 
 struct SearchView_Previews: PreviewProvider {
     static var previews: some View {
-        SearchView()
+        SearchScreen()
     }
 }

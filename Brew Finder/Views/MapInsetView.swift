@@ -29,7 +29,7 @@ struct MapInsetView: View {
     var body: some View {
         let address = "\(brewery.street ?? "") \(brewery.city ?? ""), \(brewery.state ?? "") \(brewery.postal_code ?? "")"
         locationManager.locationString = address
-        var annotations = [Marker(location: MapMarker(coordinate: annotation.coordinate))]
+        let annotations = [Marker(location: MapMarker(coordinate: annotation.coordinate))]
         annotation.title = brewery.name
        
 

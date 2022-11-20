@@ -68,9 +68,8 @@ struct BreweryDetailView: View {
     var body: some View {
         let coords = CLLocationCoordinate2D(latitude: getLat(), longitude: getLng())
         let region = MKCoordinateRegion(center: coords, span: span)
-
         
-        let address = "\(brewery.street ?? "") \(brewery.city ?? ""), \(brewery.state ?? "") \(brewery.postal_code ?? "")"
+        let address = "\(getStreet()) \(getCity()), \(getState()) \(getPostalCode())"
         locationManager.locationString = address
     
         
@@ -112,10 +111,10 @@ struct BreweryDetailView: View {
                        }
                        Text("\(getCity()), \(getState())")
                        Text(getPostalCode())
-                   }
-                   .onTapGesture {
-                       locationManager.openMapWithAddress()
-                   }
+                    }
+                       .onTapGesture {
+                           locationManager.openMapWithAddress()
+                       }
                    .alert(isPresented: $locationManager.invalid) {
                        Alert(title: Text("Something went Wrong"), message: Text("It looks like we don't have a valid address for this brewery"), dismissButton: .default(Text("OK"), action:{
                            locationManager.invalid = false
@@ -127,13 +126,17 @@ struct BreweryDetailView: View {
                    MapInsetView(region: region, brewery: brewery)
                        .cornerRadius(10)
                        .padding()
-                      
-    
                      
                }//: VStack
            }//: ZStack
         }//: Navigation Stack
         .navigationBarTitleDisplayMode(.inline)
+        .toolbar {
+            ToolbarItem(placement: .navigationBarTrailing) {
+                AddFavoriteBtn(brewery: brewery)
+            }
+
+        }
     }
 }
 
