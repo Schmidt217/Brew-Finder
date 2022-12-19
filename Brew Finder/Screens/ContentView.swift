@@ -16,14 +16,12 @@ struct ContentView: View {
             TabView {
                 SearchScreen()
                     .tabItem {
-                        Image(systemName: "square.grid.2x2")
-                        Text("Search")
+                        Label("Search", systemImage: "square.grid.2x2")
                     }
                 
                 FavoritesScreen()
                     .tabItem {
-                        Image(systemName: "star")
-                        Text("Favorites")
+                        Label("Favorites", systemImage: "star")
                     }
         
             } //: Tab

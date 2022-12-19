@@ -15,8 +15,6 @@ struct MapInsetView: View {
     let span = MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)
     @ObservedObject var locationManager = LocationManager()
     
-    
-    
     var brewery: Brewery
     
     struct Marker: Identifiable {
@@ -25,14 +23,12 @@ struct MapInsetView: View {
     }
     
   
-    
     var body: some View {
         let address = "\(brewery.street ?? "") \(brewery.city ?? ""), \(brewery.state ?? "") \(brewery.postal_code ?? "")"
         locationManager.locationString = address
         let annotations = [Marker(location: MapMarker(coordinate: annotation.coordinate))]
         annotation.title = brewery.name
        
-
         return Map(coordinateRegion: $region, showsUserLocation: true, annotationItems: annotations) {_ in
             MapMarker(coordinate: annotation.coordinate)
         }
@@ -45,6 +41,12 @@ struct MapInsetView: View {
                 }
             }
           
+    }
+}
+
+struct MapInsetView_Previews: PreviewProvider {
+    static var previews: some View {
+        MapInsetView(region: MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 39.920540, longitude: -105.086647), span: MKCoordinateSpan(latitudeDelta: 6, longitudeDelta: 6)), brewery: Brewery.example)
     }
 }
 

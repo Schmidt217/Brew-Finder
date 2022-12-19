@@ -24,3 +24,9 @@ struct BreweryListView: View {
     }
 }
 
+struct BreweryListView_Previews: PreviewProvider {
+    static var previews: some View {
+        BreweryListView(brewery: Brewery.example)
+    }
+}
+

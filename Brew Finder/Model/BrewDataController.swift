@@ -10,7 +10,6 @@ import Foundation
 
 class BrewDataController: ObservableObject {
     let container = NSPersistentContainer(name: "BreweryDataModel")
-    @Published var brewery: [Brewery] = []
     
     init() {
         container.loadPersistentStores { description, error in

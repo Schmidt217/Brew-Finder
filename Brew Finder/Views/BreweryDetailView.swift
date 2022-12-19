@@ -159,3 +159,9 @@ extension CLLocationCoordinate2D: Equatable {
         return lhs.latitude == rhs.latitude && lhs.longitude == rhs.longitude
     }
 }
+
+struct BreweryDetailView_Previews: PreviewProvider {
+    static var previews: some View {
+        BreweryDetailView(brewery: Brewery.example)
+    }
+}

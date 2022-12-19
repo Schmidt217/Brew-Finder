@@ -9,13 +9,14 @@ import SwiftUI
 
 struct FavoritesScreen: View {
     @FetchRequest(sortDescriptors: []) var brews: FetchedResults<Brew>
-    
+
     var body: some View {
         NavigationStack {
             VStack {
                 if let breweries = brews {
-                    List(breweries) { Brew in
-                        Text(Brew.name ?? "Unknown")
+                    List(breweries) { brew in
+                        let _ = print(brew)
+                        Text(brew.name ?? "Unknown")
                     }//: BrewLIST
                 }
             } //: VSTACK

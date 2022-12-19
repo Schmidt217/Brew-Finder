@@ -15,6 +15,7 @@ struct AddFavoriteBtn: View {
         Button {
             
             let brew = Brew(context: managedObjectContext)
+            
             brew.id = brewery.id
             brew.name = brewery.name
             brew.brewery_type = brewery.brewery_type
@@ -33,6 +34,7 @@ struct AddFavoriteBtn: View {
         
             try? managedObjectContext.save()
             print("favorite pressed! \(brewery.name)")
+            print(brewery)
         } label: {
             Image(systemName: "star")
                 .resizable()
