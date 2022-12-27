@@ -7,17 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4D02C3B7292023F0002DEA1D /* BreweryDataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 4D02C3B5292023F0002DEA1D /* BreweryDataModel.xcdatamodeld */; };
-		4D02C3B92920252A002DEA1D /* BrewDataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D02C3B82920252A002DEA1D /* BrewDataController.swift */; };
 		4D02C3BD29202EE9002DEA1D /* AddFavoriteBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D02C3BC29202EE9002DEA1D /* AddFavoriteBtn.swift */; };
 		4D23D9B528DB77E7005F91BE /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D23D9B428DB77E7005F91BE /* NetworkManager.swift */; };
 		4D23D9B728DB785D005F91BE /* BreweryData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D23D9B628DB785D005F91BE /* BreweryData.swift */; };
 		4D23D9B928DB7E6B005F91BE /* ResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D23D9B828DB7E6B005F91BE /* ResultsView.swift */; };
 		4D23D9BB28DB7ED2005F91BE /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D23D9BA28DB7ED2005F91BE /* WebView.swift */; };
 		4D23D9D728DBC8D9005F91BE /* BreweryListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D23D9D628DBC8D9005F91BE /* BreweryListView.swift */; };
+		4D4C93D5295A52C000EC3CC4 /* FavoritesView-ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4C93D4295A52C000EC3CC4 /* FavoritesView-ViewModel.swift */; };
+		4D4C93D7295A536800EC3CC4 /* FileManager-DocumentsDirectory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4D4C93D6295A536800EC3CC4 /* FileManager-DocumentsDirectory.swift */; };
 		4DA73FB228DFA0EB0028ED9D /* BreweryDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA73FB128DFA0EB0028ED9D /* BreweryDetailView.swift */; };
 		4DA73FB528DFC8190028ED9D /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA73FB428DFC8190028ED9D /* LocationManager.swift */; };
 		4DA73FB728E096290028ED9D /* MapInsetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA73FB628E096290028ED9D /* MapInsetView.swift */; };
+		4DA7849C29526988007A8382 /* RemoveFavoriteBtn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DA7849B29526988007A8382 /* RemoveFavoriteBtn.swift */; };
 		4DDEE00D28D6394D00CD9FB2 /* Brew_FinderApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDEE00C28D6394D00CD9FB2 /* Brew_FinderApp.swift */; };
 		4DDEE00F28D6394D00CD9FB2 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4DDEE00E28D6394D00CD9FB2 /* ContentView.swift */; };
 		4DDEE01128D6394F00CD9FB2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4DDEE01028D6394F00CD9FB2 /* Assets.xcassets */; };
@@ -27,18 +28,19 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		4D02C3B6292023F0002DEA1D /* BreweryDataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = BreweryDataModel.xcdatamodel; sourceTree = "<group>"; };
-		4D02C3B82920252A002DEA1D /* BrewDataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrewDataController.swift; sourceTree = "<group>"; };
 		4D02C3BC29202EE9002DEA1D /* AddFavoriteBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFavoriteBtn.swift; sourceTree = "<group>"; };
 		4D23D9B428DB77E7005F91BE /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
 		4D23D9B628DB785D005F91BE /* BreweryData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreweryData.swift; sourceTree = "<group>"; };
 		4D23D9B828DB7E6B005F91BE /* ResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsView.swift; sourceTree = "<group>"; };
 		4D23D9BA28DB7ED2005F91BE /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
 		4D23D9D628DBC8D9005F91BE /* BreweryListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreweryListView.swift; sourceTree = "<group>"; };
+		4D4C93D4295A52C000EC3CC4 /* FavoritesView-ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FavoritesView-ViewModel.swift"; sourceTree = "<group>"; };
+		4D4C93D6295A536800EC3CC4 /* FileManager-DocumentsDirectory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileManager-DocumentsDirectory.swift"; sourceTree = "<group>"; };
 		4DA73FB128DFA0EB0028ED9D /* BreweryDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BreweryDetailView.swift; sourceTree = "<group>"; };
 		4DA73FB328DFC3E20028ED9D /* Brew-Finder-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "Brew-Finder-Info.plist"; sourceTree = SOURCE_ROOT; };
 		4DA73FB428DFC8190028ED9D /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		4DA73FB628E096290028ED9D /* MapInsetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapInsetView.swift; sourceTree = "<group>"; };
+		4DA7849B29526988007A8382 /* RemoveFavoriteBtn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RemoveFavoriteBtn.swift; sourceTree = "<group>"; };
 		4DDEE00928D6394D00CD9FB2 /* Brew Finder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Brew Finder.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		4DDEE00C28D6394D00CD9FB2 /* Brew_FinderApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brew_FinderApp.swift; sourceTree = "<group>"; };
 		4DDEE00E28D6394D00CD9FB2 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 			isa = PBXGroup;
 			children = (
 				4D02C3BC29202EE9002DEA1D /* AddFavoriteBtn.swift */,
+				4DA7849B29526988007A8382 /* RemoveFavoriteBtn.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -77,6 +80,15 @@
 				4DA73FB628E096290028ED9D /* MapInsetView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		4D4C93D3295A529A00EC3CC4 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				4D4C93D4295A52C000EC3CC4 /* FavoritesView-ViewModel.swift */,
+				4D4C93D6295A536800EC3CC4 /* FileManager-DocumentsDirectory.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		4DDEE00028D6394D00CD9FB2 = {
@@ -98,6 +110,7 @@
 		4DDEE00B28D6394D00CD9FB2 /* Brew Finder */ = {
 			isa = PBXGroup;
 			children = (
+				4D4C93D3295A529A00EC3CC4 /* ViewModels */,
 				4D02C3BB29202EB8002DEA1D /* Components */,
 				4DA73FB328DFC3E20028ED9D /* Brew-Finder-Info.plist */,
 				4D23D9AF28DB712F005F91BE /* Views */,
@@ -124,8 +137,6 @@
 				4D23D9B428DB77E7005F91BE /* NetworkManager.swift */,
 				4D23D9B628DB785D005F91BE /* BreweryData.swift */,
 				4DA73FB428DFC8190028ED9D /* LocationManager.swift */,
-				4D02C3B5292023F0002DEA1D /* BreweryDataModel.xcdatamodeld */,
-				4D02C3B82920252A002DEA1D /* BrewDataController.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -216,6 +227,8 @@
 			files = (
 				4D23D9B528DB77E7005F91BE /* NetworkManager.swift in Sources */,
 				4DA73FB728E096290028ED9D /* MapInsetView.swift in Sources */,
+				4DA7849C29526988007A8382 /* RemoveFavoriteBtn.swift in Sources */,
+				4D4C93D5295A52C000EC3CC4 /* FavoritesView-ViewModel.swift in Sources */,
 				4D23D9B928DB7E6B005F91BE /* ResultsView.swift in Sources */,
 				4D23D9D728DBC8D9005F91BE /* BreweryListView.swift in Sources */,
 				4DA73FB528DFC8190028ED9D /* LocationManager.swift in Sources */,
@@ -223,11 +236,10 @@
 				4DA73FB228DFA0EB0028ED9D /* BreweryDetailView.swift in Sources */,
 				4DDEE00F28D6394D00CD9FB2 /* ContentView.swift in Sources */,
 				4D02C3BD29202EE9002DEA1D /* AddFavoriteBtn.swift in Sources */,
-				4D02C3B7292023F0002DEA1D /* BreweryDataModel.xcdatamodeld in Sources */,
-				4D02C3B92920252A002DEA1D /* BrewDataController.swift in Sources */,
 				4D23D9B728DB785D005F91BE /* BreweryData.swift in Sources */,
 				4D23D9BB28DB7ED2005F91BE /* WebView.swift in Sources */,
 				4DDEE01E28D63D2600CD9FB2 /* SearchScreen.swift in Sources */,
+				4D4C93D7295A536800EC3CC4 /* FileManager-DocumentsDirectory.swift in Sources */,
 				4DDEE00D28D6394D00CD9FB2 /* Brew_FinderApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -429,19 +441,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		4D02C3B5292023F0002DEA1D /* BreweryDataModel.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				4D02C3B6292023F0002DEA1D /* BreweryDataModel.xcdatamodel */,
-			);
-			currentVersion = 4D02C3B6292023F0002DEA1D /* BreweryDataModel.xcdatamodel */;
-			path = BreweryDataModel.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 4DDEE00128D6394D00CD9FB2 /* Project object */;
 }

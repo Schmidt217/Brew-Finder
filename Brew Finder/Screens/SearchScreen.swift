@@ -14,19 +14,10 @@ struct SearchScreen: View {
     @State private var brewSearch = ""
     @ObservedObject var networkManager = NetworkManager()
     @ObservedObject var locationManager = LocationManager()
-
-    func hideKeyboard() {
-    UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-    }
     
     let gradient = LinearGradient(colors: [Color("DarkGreen"), Color("Brown")],
                                   startPoint: .top, endPoint: .bottom)
     
-    init() {
-       UITableView.appearance().separatorStyle = .none
-       UITableViewCell.appearance().backgroundColor = .green
-       UITableView.appearance().backgroundColor = .green
-    }
     
     var body: some View {
         NavigationStack {
@@ -73,8 +64,8 @@ struct SearchScreen: View {
                         .frame(width: 300, height: 80)
                         .onTapGesture {
                             locationManager.requestAuthorization(always: true)
-                            guard let latitude = CLLocationManager().location?.coordinate.latitude else {return}
-                            guard let longitude = CLLocationManager().location?.coordinate.longitude else {return}
+                            guard let latitude = CLLocationManager().location?.coordinate.latitude else { return }
+                            guard let longitude = CLLocationManager().location?.coordinate.longitude else { return }
                             networkManager.fetchDataByLocation(latitude: latitude, longitude: longitude)
                             
                             }

@@ -12,10 +12,12 @@ import CoreLocation
 
 struct BreweryDetailView: View {
     @ObservedObject var locationManager = LocationManager()
+    @StateObject private var viewModel = ViewModel()
+    @State var isFavorite: Bool = false
 
+    let brewery: Brewery
 
     let span = MKCoordinateSpan(latitudeDelta: 0.03, longitudeDelta: 0.03)
-    let brewery: Brewery
     
     func getLat() -> CLLocationDegrees {
         guard let latitude = brewery.latitude else {return 0.00}
@@ -72,7 +74,6 @@ struct BreweryDetailView: View {
         let address = "\(getStreet()) \(getCity()), \(getState()) \(getPostalCode())"
         locationManager.locationString = address
     
-        
        return NavigationStack {
            ZStack {
                gradient
@@ -81,7 +82,7 @@ struct BreweryDetailView: View {
                VStack {
                    Text(brewery.name)
                        .font(.system(.title))
-                       .padding(10)
+                       .padding(30)
                        .multilineTextAlignment(.center)
                    Text("Brewery Type: \(breweryType())")
                    Spacer()
@@ -90,6 +91,7 @@ struct BreweryDetailView: View {
                            HStack{
                                Image(systemName: "link.circle.fill")
                                Text("Website")
+                                   .font(.title2)
                            }
                        }
                    }
@@ -97,6 +99,7 @@ struct BreweryDetailView: View {
                        Link(destination: URL(string: "tel:\(phoneNumber)")!){
                            Image(systemName: "phone")
                            Text(phoneNumber.applyPatternOnNumbers(pattern: "(###) ###-#### ", replacementCharacter: "#"))
+                               .font(.title3)
                        }
                        .padding()
                    }
@@ -130,10 +133,23 @@ struct BreweryDetailView: View {
                }//: VStack
            }//: ZStack
         }//: Navigation Stack
+       .onAppear {
+           let favorites = viewModel.breweries
+           if favorites.contains(brewery) {
+               isFavorite = true
+           } else {
+               isFavorite = false
+           }
+       }
         .navigationBarTitleDisplayMode(.inline)
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
-                AddFavoriteBtn(brewery: brewery)
+                if isFavorite {
+                    RemoveFavoriteBtn(brewery: brewery)
+                } else {
+                    AddFavoriteBtn(brewery: brewery)
+                }
+ 
             }
 
         }
@@ -160,8 +176,8 @@ extension CLLocationCoordinate2D: Equatable {
     }
 }
 
-struct BreweryDetailView_Previews: PreviewProvider {
-    static var previews: some View {
-        BreweryDetailView(brewery: Brewery.example)
-    }
-}
+//struct BreweryDetailView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        BreweryDetailView(brewery: Brewery.example)
+//    }
+//}

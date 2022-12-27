@@ -8,24 +8,43 @@
 import SwiftUI
 
 struct FavoritesScreen: View {
-    @FetchRequest(sortDescriptors: []) var brews: FetchedResults<Brew>
-
+    @StateObject private var viewModel = ViewModel()
+    
+    let gradient = LinearGradient(colors: [Color("DarkGreen"), Color("Brown")],
+                                  startPoint: .top, endPoint: .bottom)
+    
     var body: some View {
         NavigationStack {
-            VStack {
-                if let breweries = brews {
-                    List(breweries) { brew in
-                        let _ = print(brew)
-                        Text(brew.name ?? "Unknown")
-                    }//: BrewLIST
+            ZStack {
+                gradient
+                    .opacity(0.35)
+                    .ignoresSafeArea()
+                
+                VStack {
+                    if viewModel.breweries.isEmpty {
+                        Text("Add favorite breweries to see them here!")
+                    }
+                    List {
+                        ForEach(viewModel.breweries) { brewery in
+                            NavigationLink(destination: BreweryDetailView(brewery: brewery)) {
+                                BreweryListView(brewery: brewery)
+                            }
+                        }
+                    }
+                    .background(.clear)
+                    .scrollContentBackground(.hidden)
+                    .blendMode(viewModel.breweries.isEmpty ? .destinationOver : .normal)
+                } //: VSTACK
+                .padding()
+                .navigationTitle("Favorite Brews")
+                .navigationBarTitleDisplayMode(.large)
+                .foregroundColor(Color("DarkGreen"))
+                .onAppear {
+                    viewModel.loadFavorites()
                 }
-            } //: VSTACK
-            .navigationTitle("Favorite Brews")
-            .navigationBarTitleDisplayMode(.large)
-            .foregroundColor(Color("DarkGreen"))
-        }//: NAVIGATION STACK
-      
-
+            }
+           
+        }
     }
 }
 

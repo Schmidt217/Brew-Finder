@@ -20,17 +20,39 @@ struct MapInsetView: View {
     struct Marker: Identifiable {
         let id = UUID()
         var location: MapMarker
+        var name: String
     }
     
   
     var body: some View {
         let address = "\(brewery.street ?? "") \(brewery.city ?? ""), \(brewery.state ?? "") \(brewery.postal_code ?? "")"
         locationManager.locationString = address
-        let annotations = [Marker(location: MapMarker(coordinate: annotation.coordinate))]
+        let annotations = [Marker(location: MapMarker(coordinate: annotation.coordinate), name: brewery.name)]
         annotation.title = brewery.name
        
         return Map(coordinateRegion: $region, showsUserLocation: true, annotationItems: annotations) {_ in
-            MapMarker(coordinate: annotation.coordinate)
+            MapAnnotation(coordinate: annotation.coordinate) {
+                VStack {
+                    ZStack {
+                        Circle()
+                            .frame(width: 45)
+                            .foregroundColor(Color("Green"))
+                        Circle()
+                            .frame(width: 35)
+                            .foregroundColor(Color("LightBrown"))
+                        Image("beer-glass")
+                            .resizable()
+                            .scaledToFit()
+                            .frame(width: 35, height: 35)
+                        
+                    }
+                   
+                    Text(brewery.name)
+                        .foregroundColor(Color("DarkGreen"))
+                        .font(.title3)
+                        .fontWeight(.bold)
+                }
+            }
         }
             .frame(width: 300, height: 300)
             .onAppear {

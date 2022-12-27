@@ -1,32 +1,31 @@
 //
-//  AddFavoriteBtn.swift
+//  RemoveFavoriteBtn.swift
 //  Brew Finder
 //
-//  Created by Michael Schmidt on 11/12/22.
+//  Created by Michael Schmidt on 12/20/22.
 //
 
 import SwiftUI
 
-struct AddFavoriteBtn: View {
+struct RemoveFavoriteBtn: View {
     @StateObject private var viewModel = ViewModel()
+    
     let brewery: Brewery
     
     var body: some View {
         Button {
-            viewModel.addBreweryToFavorites(brewery: brewery)
+            viewModel.removeBreweryFromFavorites(brewery: brewery)
         
         } label: {
-            Image(systemName: "star")
+            Image(systemName: "star.fill")
                 .resizable()
                 .frame(width: 20, height: 20)
         }
-        
-            
     }
 }
 
-struct AddFavoriteBtn_Previews: PreviewProvider {
+struct RemoveFavoriteBtn_Previews: PreviewProvider {
     static var previews: some View {
-        AddFavoriteBtn(brewery: Brewery.example)
+        RemoveFavoriteBtn(brewery: Brewery.example)
     }
 }

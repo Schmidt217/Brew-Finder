@@ -19,7 +19,6 @@ struct BreweryListView: View {
                 .frame(width: 35, height: 35)
             Text(brewery.name)
             Spacer()
-            Image(systemName: "star")
         }
     }
 }
