@@ -14,6 +14,7 @@ struct BreweryDetailView: View {
     @ObservedObject var locationManager = LocationManager()
     @StateObject private var viewModel = ViewModel()
     @State var isFavorite: Bool = false
+    @State private var toast: Toast? = nil
 
     let brewery: Brewery
 
@@ -145,14 +146,36 @@ struct BreweryDetailView: View {
         .toolbar {
             ToolbarItem(placement: .navigationBarTrailing) {
                 if isFavorite {
-                    RemoveFavoriteBtn(brewery: brewery)
+                    Button {
+                        toast = Toast(type: .success, title: "Removed from Favorites", message: "\(brewery.name) was removed from your favorites!")
+                        viewModel.removeBreweryFromFavorites(brewery: brewery)
+                        isFavorite.toggle()
+                    
+                    } label: {
+                        Image(systemName: "star.fill")
+                            .resizable()
+                            .frame(width: 20, height: 20)
+                    }
+                    .toastView(toast: $toast)
                 } else {
-                    AddFavoriteBtn(brewery: brewery)
+                    VStack {
+                        Button {
+                            toast = Toast(type: .success, title: "Added to Favorites", message: "\(brewery.name) was added to your favorites!")
+                            viewModel.addBreweryToFavorites(brewery: brewery)
+                            isFavorite.toggle()
+                        } label: {
+                            Image(systemName: "star")
+                                .resizable()
+                                .frame(width: 20, height: 20)
+                        }
+                    }
+                    .toastView(toast: $toast)
                 }
  
             }
 
         }
+        .toastView(toast: $toast)
     }
 }
 
@@ -176,8 +199,14 @@ extension CLLocationCoordinate2D: Equatable {
     }
 }
 
-//struct BreweryDetailView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        BreweryDetailView(brewery: Brewery.example)
-//    }
-//}
+extension View {
+    func toastView(toast: Binding<Toast?>) -> some View {
+        self.modifier(ToastModifier(toast: toast))
+    }
+}
+
+struct BreweryDetailView_Previews: PreviewProvider {
+    static var previews: some View {
+        BreweryDetailView(brewery: Brewery.example)
+    }
+}
