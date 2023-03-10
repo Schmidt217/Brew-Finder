@@ -11,13 +11,12 @@ struct FavoritesScreen: View {
     @StateObject private var viewModel = ViewModel()
     
     let gradient = LinearGradient(colors: [Color("DarkGreen"), Color("Brown")],
-                                  startPoint: .top, endPoint: .bottom)
+                                  startPoint: .topLeading, endPoint: .bottomTrailing)
     
     var body: some View {
         NavigationStack {
             ZStack {
                 gradient
-                    .opacity(0.35)
                     .ignoresSafeArea()
                 
                 VStack {
@@ -37,8 +36,8 @@ struct FavoritesScreen: View {
                 } //: VSTACK
                 .padding()
                 .navigationTitle("Favorite Brews")
-                .navigationBarTitleDisplayMode(.large)
-                .foregroundColor(Color("DarkGreen"))
+                .navigationBarColor(backgroundColor: .clear, titleColor: UIColor(Color("Yellow")))
+                .foregroundColor(.white)
                 .onAppear {
                     viewModel.loadFavorites()
                 }

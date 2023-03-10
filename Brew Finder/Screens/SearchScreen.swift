@@ -15,27 +15,40 @@ struct SearchScreen: View {
     @ObservedObject var networkManager = NetworkManager()
     @ObservedObject var locationManager = LocationManager()
     
-    let gradient = LinearGradient(colors: [Color("DarkGreen"), Color("Brown")],
-                                  startPoint: .top, endPoint: .bottom)
-    
+    let gradient = LinearGradient(colors: [Color("DarkGreen"), Color("Brown")], startPoint: .topLeading, endPoint: .bottomTrailing)
     
     var body: some View {
         NavigationStack {
             ZStack {
                 gradient
-                    .opacity(0.35)
                     .ignoresSafeArea()
                 
                 VStack {
                     Text("Search For Breweries")
                         .font(.system(.title3, design: .rounded))
                         .fontWeight(.bold)
+                        .foregroundColor(.white)
                     
-                    TextField("Search by Name", text: $brewSearch)
+                    TextField("", text: $brewSearch)
+                        .padding(.all)
                         .frame(width: 300, height: 50.0)
                         .textInputAutocapitalization(.never)
+                        .foregroundColor(.white)
+                        .background(
+                               ZStack{
+                                   if brewSearch.count == 0 {
+                                       HStack {
+                                           Text("Search by Name")
+                                               .foregroundColor(.gray)
+                                               .padding(.all)
+                                           Spacer()
+                                     }
+                                    .frame(maxWidth: .infinity)
+                                   }
+                               }
+                           )
                         .disableAutocorrection(true)
-                        .border(.primary)
+                        .border(Color.white)
                         .cornerRadius(3.0)
                         .padding()
                         .onChange(of: brewSearch) { newValue in
@@ -50,7 +63,7 @@ struct SearchScreen: View {
                     HStack(alignment: .center) {
                         ZStack {
                             Capsule()
-                                .fill(Color("Brown"))
+                                .fill(Color("Yellow"))
                             Capsule()
                                 .fill(.black.opacity(0.15))
                                 .padding(8)
@@ -84,7 +97,7 @@ struct SearchScreen: View {
                     }
                 }
             .navigationTitle("Brew Finder")
-            .navigationBarTitleDisplayMode(.large)
+            .navigationBarColor(backgroundColor: .clear, titleColor: UIColor(Color("Yellow")))
             .foregroundColor(Color("DarkGreen"))
             }
         }

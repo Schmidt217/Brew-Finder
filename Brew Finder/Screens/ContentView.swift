@@ -8,9 +8,12 @@
 import SwiftUI
 
 struct ContentView: View {
+//    init() {
+//        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: Color(red: 1.0, green: 1.0, blue: 1.0)]
+//
+//    }
     
-    let gradient = LinearGradient(colors: [Color("DarkGreen"), Color("Brown")],
-                                  startPoint: .top, endPoint: .bottom)
+    let gradient = LinearGradient(colors: [Color("DarkGreen"), Color("Brown")], startPoint: .top, endPoint: .bottom)
 
     var body: some View {
             TabView {
@@ -25,10 +28,10 @@ struct ContentView: View {
                     }
         
             } //: Tab
-            .accentColor(Color("Green"))
+            .accentColor(Color("Yellow"))
             .onAppear {
                 let tabBarAppearance = UITabBarAppearance()
-                tabBarAppearance.backgroundColor = UIColor(Color("LightBrown"))
+                tabBarAppearance.backgroundColor = UIColor(.white)
                 UITabBar.appearance().scrollEdgeAppearance = tabBarAppearance
             }
         }
