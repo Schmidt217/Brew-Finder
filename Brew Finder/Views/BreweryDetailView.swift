@@ -69,7 +69,7 @@ struct BreweryDetailView: View {
     }
 
     let gradient = LinearGradient(colors: [Color("DarkGreen"), Color("Brown")],
-        startPoint: .topLeading, endPoint: .bottomTrailing)
+                                  startPoint: .topLeading, endPoint: .bottomTrailing)
 
     var body: some View {
         let coords = CLLocationCoordinate2D(latitude: getLat(), longitude: getLng())

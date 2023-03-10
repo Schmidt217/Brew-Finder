@@ -9,16 +9,16 @@ import SwiftUI
 
 struct FavoritesScreen: View {
     @StateObject private var viewModel = ViewModel()
-    
+
     let gradient = LinearGradient(colors: [Color("DarkGreen"), Color("Brown")],
                                   startPoint: .topLeading, endPoint: .bottomTrailing)
-    
+
     var body: some View {
         NavigationStack {
             ZStack {
                 gradient
                     .ignoresSafeArea()
-                
+
                 VStack {
                     if viewModel.breweries.isEmpty {
                         Text("Add favorite breweries to see them here!")
@@ -42,7 +42,6 @@ struct FavoritesScreen: View {
                     viewModel.loadFavorites()
                 }
             }
-           
         }
     }
 }
