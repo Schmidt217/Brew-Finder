@@ -22,6 +22,7 @@ struct FavoritesScreen: View {
                 VStack {
                     if viewModel.breweries.isEmpty {
                         Text("Add favorite breweries to see them here!")
+                            .foregroundColor(.white)
                     }
                     List {
                         ForEach(viewModel.breweries) { brewery in
@@ -37,7 +38,6 @@ struct FavoritesScreen: View {
                 .padding()
                 .navigationTitle("Favorite Brews")
                 .navigationBarColor(backgroundColor: .clear, titleColor: UIColor(Color("Yellow")))
-                .foregroundColor(.white)
                 .onAppear {
                     viewModel.loadFavorites()
                 }

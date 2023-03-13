@@ -2,14 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>UIUserInterfaceStyle</key>
-	<string>Light</string>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>This app only uses your location for the purposes of finding breweries based off your current location.</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>This app only uses your location for the purposes of finding breweries based off your current location.</string>
-	<key>NSLocationUsageDescription</key>
-	<string>This app wants to use your location to find breweries around you!</string>
 	<key>UILaunchScreen</key>
 	<dict>
 		<key>UIColorName</key>
@@ -17,5 +9,7 @@
 		<key>UILaunchScreen</key>
 		<dict/>
 	</dict>
+	<key>UIViewControllerBasedStatusBarAppearance</key>
+	<false/>
 </dict>
 </plist>
